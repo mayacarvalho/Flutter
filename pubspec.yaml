@@ -1,0 +1,22 @@
+name: Flutter
+description: Curso Flutter, TDD, Clean Architecture, SOLID e Design Patterns
+publish_to: 'none'
+version: 0.0.1
+
+enviroment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  test:
+  mockito:
+  faker:
+
+flutter:
+  uses-material-design: true
