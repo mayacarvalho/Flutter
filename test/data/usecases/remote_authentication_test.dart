@@ -2,11 +2,9 @@ import 'package:faker/faker.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
-import 'package:Flutter/domain/usecases/usecases.dart';
-
-import 'package:Flutter/data/usecases/usecases.dart';
+import '../../../lib/data/usescases/remote_authentication.dart';
+import '../../../lib/domain/usecases/usecases.dart';
 import 'package:Flutter/data/http/http.dart';
-
 import '../../../lib/domain/helpers/helpers.dart';
 
 class HttpClientSpy extends Mock implements HttpClient {}
@@ -68,5 +66,16 @@ void main() {
     final future = sut.auth(params);
 
     expect(future, throwsA(DomainError.invalidCredentials));
+  });
+
+//Teste generico que serve para qualquer caso de uso
+  test('Should return an Account if HttpClient returns 200', () async{
+    final accessToken = faker.guid.guid();
+    when(httpClient.request(url: anyNamed('url'), method: anyNamed('method'), body: anyNamed('body')))
+      .thenAnswer((_) async => {'accessToken': accessToken, 'name': faker.person.name()});
+
+    final account = await sut.auth(params);
+
+    expect(account.token, accessToken);
   });
 }
