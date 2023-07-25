@@ -7,11 +7,11 @@ abstract class Authentication {
 }
 
 class AuthenticationParams {
-  final Strinf email;
+  final String email;
   final String secret;
 
   AuthenticationParams({
-    @required this.mail,
+    @required this.email,
     @required this.secret
   })
 }
