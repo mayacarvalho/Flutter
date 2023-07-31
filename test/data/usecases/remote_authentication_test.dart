@@ -31,6 +31,19 @@ void main() {
     ));
   });
 
+  test('Should call HttpClient with correct values', () async {
+    when(httpClient.request(url: anyNamed('url'), method: anyNamed('method'), body: anyNamed('body')))
+      .thenAnswer((_) async => {'accessToken': faker.guid.guid(), 'name': faker.person.name()});
+    
+    await sut.auth(params);
+
+    verify(httpClient.request(
+      url: url,
+      method: 'post'
+      body: {'email': params.email, 'password': params.secret}
+    ));
+  });
+
   test('Should throw UnexpectedError if HttpClient returns 400', () async{
     when(httpClient.request(url: anyNamed('url'), method: anyNamed('method'), body: anyNamed('body')))
       .thenThrow(HttpError.badRequest);
