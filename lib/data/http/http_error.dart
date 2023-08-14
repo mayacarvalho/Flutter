@@ -2,5 +2,7 @@ enum HttpError {
   badRequest,
   notFound,
   serverError,
-  unauthorized
+  unauthorized,
+  forbidden,
+  invalidData
 }
