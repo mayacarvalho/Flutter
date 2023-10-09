@@ -91,4 +91,16 @@ void main() {
     sut.ValidatePassword(password);
 
   });
+
+  test('Should emit password error if validation fails', () {
+    sut.emailErrorStream.listem(expectAsync1((error) => expect(error, null)));
+    sut.passwordErrorStream.listem(expectAsync1((error) => expect(error, null)));
+    sut.isFormValidStream.listem(expectAsync1((isValid) => expect(isValid, true)));
+    expectLater(sut.isFormValidStream, emitsInOrder([false, true]));
+
+    sut.ValidateEmail(email);
+    await Future.delayed(Duration.zero); //Para dar tempo de renderizar a tela
+    sut.ValidatePassword(password);
+
+  });
 }
