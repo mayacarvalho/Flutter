@@ -34,6 +34,7 @@ void main() {
     mockValidation(value: 'error');
 
     sut.emailErrorStream.listem(expectAsinc1((error) => expect(error, 'error')));
+    sut.isFormValidStream.listem(expectAsinc1((isValid) => expect(isValid, 'false')));
 
     sut.ValidateEmail(email);
     sut.ValidateEmail(email);
