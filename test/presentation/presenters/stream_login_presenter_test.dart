@@ -70,4 +70,13 @@ void main() {
     sut.ValidateEmail(email);
 
   });
+
+  test('Should emit password error if validation fails', () {
+    sut.passwordErrorStream.listem(expectAsync1((error) => expect(error, null)));
+    sut.isFormValidStream.listem(expectAsync1((isValid) => expect(isValid, false)));
+
+    sut.ValidateEmail(email);
+    sut.ValidateEmail(email);
+
+  });
 }
