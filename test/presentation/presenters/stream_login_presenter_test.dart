@@ -2,13 +2,16 @@ import 'package:faker/faker.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
+import '../../../lib/domain/usecases/authentication.dart';
 import '../../../lib/presentation/presenters/protocols/protocols.dart';
 import '../../../lib/presentation/presenters/presenters.dart';
 
 class ValidationSpy extends Mock implements Validation {}
+class AuthenticationSpy extends Mock implements Authentication {}
 
 void main() {
   StreamLoginPresenter sut;
+  AuthenticationSpy authentication;
   ValidationSpy validation;
   String email;
   String password;
@@ -21,10 +24,11 @@ void main() {
   }
 
   setUp(() {
-    final validation = ValidationSpy();
-    final sut = StreamLoginPresenter(validation: validation);
-    final email = faker.internet.email();
-    final password = faker.internet.password();
+    validation = ValidationSpy();
+    authentication = AuthenticationSpy();
+    sut = StreamLoginPresenter(validation: validation, authentication: authentication);
+    email = faker.internet.email();
+    password = faker.internet.password();
     mockValidation();
   });
 
@@ -68,7 +72,6 @@ void main() {
 
     sut.ValidateEmail(email);
     sut.ValidateEmail(email);
-
   });
 
   test('Should emit password error if validation fails', () {
@@ -77,7 +80,6 @@ void main() {
 
     sut.ValidatePassword(password);
     sut.ValidatePassword(password);
-
   });
 
   test('Should emit password error if validation fails', () {
@@ -89,7 +91,6 @@ void main() {
 
     sut.ValidateEmail(email);
     sut.ValidatePassword(password);
-
   });
 
   test('Should emit password error if validation fails', () {
@@ -101,6 +102,13 @@ void main() {
     sut.ValidateEmail(email);
     await Future.delayed(Duration.zero); //Para dar tempo de renderizar a tela
     sut.ValidatePassword(password);
+  });
 
+  test('Should call Authentication with correct values', () {
+    sut.ValidateEmail(email);
+    sut.ValidatePassword(password);
+    await sut.auth();
+
+    verify(authentication.auth(AuthenticationParams(email: email, secret: password ))).called(1);
   });
 }

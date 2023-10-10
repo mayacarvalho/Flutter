@@ -1,5 +1,4 @@
 //Lib recebe o body em formato de string, tem que converter para o Json
-import 'package:http/http.dart' as http;
 import '../../../../lib/data/http/http.dart';
 
 class ClientSpy extends Mock implements Client {}

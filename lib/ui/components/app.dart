@@ -14,10 +14,8 @@ class App extends StatelessWidget {
         primaryColor: primaryColor,
         primaryColorDark: primaryColorDark,
         primaryColorLight: primaryColorLight,
-        accentColor: primaryColor,
-        backgroundColor: Colors.white,
         textTheme: TextTheme(
-          headline1: TextStyle(
+          displayLarge: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
             color: primaryColorDark
@@ -41,7 +39,7 @@ class App extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20)
           )
-        )
+        ), colorScheme: ColorScheme.fromSwatch().copyWith(secondary: primaryColor), colorScheme: ColorScheme(background: Colors.white)
       ), // ThemeData
       home: LoginPage(),
     ); // MaterialApp
