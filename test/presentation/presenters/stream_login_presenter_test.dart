@@ -2,9 +2,12 @@ import 'package:faker/faker.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
-import '../../../lib/domain/usecases/authentication.dart';
-import '../../../lib/presentation/presenters/protocols/protocols.dart';
-import '../../../lib/presentation/presenters/presenters.dart';
+import 'package:Flutter/domain/entities/entities.dart';
+import 'package:Flutter/domain/usecases/usecases.dart';
+
+import 'package:Flutter/presentation/presenters/presenters.dart';
+import 'package:Flutter/presentation/presenters/protocols/protocols.dart';
+
 
 class ValidationSpy extends Mock implements Validation {}
 class AuthenticationSpy extends Mock implements Authentication {}
@@ -17,10 +20,16 @@ void main() {
   String password;
   
   PostExpectation mockValidationCall(String field) =>
-    when(validation.validate(field: field == null ? anyNamed('field'), value: anyNamed('value')));
+    when(validation.validate(field: field === null ? anyNamed('field') : field, value: anyNamed('value')));
   
   void mockValidation({String field, String value}) {
     mockValidationCall(field).thenReturn(value);
+  }
+
+  PostExpectation mockAuthenticationCall() => when(authentication.auth(any));
+  
+  void mockAuthentication() {
+    mockAuthenticationCall().thenAnswer((_) async => AccountEntity(faker.guid.guid()));
   }
 
   setUp(() {
@@ -30,6 +39,7 @@ void main() {
     email = faker.internet.email();
     password = faker.internet.password();
     mockValidation();
+    mockAuthentication();
   });
 
   test('Should call Validation with correct email', () {
@@ -104,11 +114,20 @@ void main() {
     sut.ValidatePassword(password);
   });
 
-  test('Should call Authentication with correct values', () {
+  test('Should call Authentication with correct values', () async{
     sut.ValidateEmail(email);
     sut.ValidatePassword(password);
     await sut.auth();
 
     verify(authentication.auth(AuthenticationParams(email: email, secret: password ))).called(1);
+  });
+  
+  test('Should emit correct events on Authentication succees', () async {
+    sut.ValidateEmail(email);
+    sut.ValidatePassword(password);
+
+    expectLater(sut.isLoadingStream, emitsInOrder([true, false]));
+
+    await sut.auth();
   });
 }
