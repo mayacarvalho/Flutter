@@ -106,6 +106,10 @@ frontend_server_client
 2.12
 file:///home/mayannara/.pub-cache/hosted/pub.dev/frontend_server_client-3.2.0/
 file:///home/mayannara/.pub-cache/hosted/pub.dev/frontend_server_client-3.2.0/lib/
+get
+2.15
+file:///home/mayannara/.pub-cache/hosted/pub.dev/get-4.6.6/
+file:///home/mayannara/.pub-cache/hosted/pub.dev/get-4.6.6/lib/
 glob
 2.19
 file:///home/mayannara/.pub-cache/hosted/pub.dev/glob-2.1.2/
@@ -294,10 +298,6 @@ yaml
 2.19
 file:///home/mayannara/.pub-cache/hosted/pub.dev/yaml-3.1.2/
 file:///home/mayannara/.pub-cache/hosted/pub.dev/yaml-3.1.2/lib/
-Flutter
-2.12
-file:///home/mayannara/projects/Flutter/
-file:///home/mayannara/projects/Flutter/lib/
 sky_engine
 3.0
 file:///home/mayannara/projects/dart-sdk/flutter/bin/cache/pkg/sky_engine/
@@ -310,4 +310,8 @@ flutter_test
 3.0
 file:///home/mayannara/projects/dart-sdk/flutter/packages/flutter_test/
 file:///home/mayannara/projects/dart-sdk/flutter/packages/flutter_test/lib/
+firstapp
+2.12
+file:///home/mayannara/projects/firstapp/
+file:///home/mayannara/projects/firstapp/lib/
 2

@@ -2,12 +2,12 @@ import 'package:faker/faker.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
-import 'package:Flutter/domain/entities/entities.dart';
-import 'package:Flutter/domain/helpers/helpers.dart';
-import 'package:Flutter/domain/usecases/usecases.dart';
+import 'package:firstapp/domain/entities/entities.dart';
+import 'package:firstapp/domain/helpers/helpers.dart';
+import 'package:firstapp/domain/usecases/usecases.dart';
 
-import 'package:Flutter/presentation/presenters/presenters.dart';
-import 'package:Flutter/presentation/presenters/protocols/protocols.dart';
+import 'package:firstapp/presentation/presenters/presenters.dart';
+import 'package:firstapp/presentation/presenters/protocols/protocols.dart';
 
 
 class ValidationSpy extends Mock implements Validation {}

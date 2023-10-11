@@ -1,4 +1,4 @@
-import 'package:Flutter/validation/validators/validators.dart';
+import 'package:firstapp/validation/validators/validators.dart';
 import 'package:test/test.dart';
 
 void main() {

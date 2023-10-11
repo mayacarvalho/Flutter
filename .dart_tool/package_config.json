@@ -176,6 +176,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "get",
+      "rootUri": "file:///home/mayannara/.pub-cache/hosted/pub.dev/get-4.6.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "glob",
       "rootUri": "file:///home/mayannara/.pub-cache/hosted/pub.dev/glob-2.1.2",
       "packageUri": "lib/",
@@ -464,13 +470,13 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "Flutter",
+      "name": "firstapp",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2023-10-10T16:29:45.546827Z",
+  "generated": "2023-10-11T04:03:39.423106Z",
   "generator": "pub",
   "generatorVersion": "3.1.3"
 }

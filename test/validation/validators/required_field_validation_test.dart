@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
 
-import 'package:Flutter/validation/validators/validators.dart';
+import 'package:firstapp/validation/validators/validators.dart';
 
 void main() {
   RequiredFieldValidation sut;
