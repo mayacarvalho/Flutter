@@ -41,7 +41,7 @@ class RemoteAuthenticationParams {
     @required this.password
   })
 
-  factory RemoteAuthenticationParams.fromDomain(AuthenticationParams params) =>
+  factory RemoteAuthenticationParams.fromDomain(AuthenticationParams params) => 
     RemoteAuthenticationParams(email: params.email, password: params.secret);
 
   //Converte para um Json
