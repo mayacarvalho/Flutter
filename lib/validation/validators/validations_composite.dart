@@ -14,7 +14,7 @@ class ValidationComposite implements Validation {
 
     for (final validation in validations.where((v) => v.field == field)) {
       final error = validation.validate(value);
-      if (error?.isNotEmpty == true) {
+      if (error.isNotEmpty == true) {
         return error;
       }
     }
