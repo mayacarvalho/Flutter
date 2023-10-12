@@ -3,8 +3,8 @@ import '../../../../ui/pages/login/login.dart';
 
 import '../../factories.dart';
 
-LoginPresenter makeLoginPresenter() {
-  return StreamLoginPresenter(
+LoginPresenter makeGetxLoginPresenter() {
+  return GetxLoginPresenter(
       authentication: makeRemoteAuthentication(),
       validation: makeLoginValidation());
 }
