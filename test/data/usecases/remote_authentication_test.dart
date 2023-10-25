@@ -3,7 +3,7 @@ import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
 import '../../../lib/data/http/http.dart';
-import '../../../lib/data/usescases/remote_authentication.dart';
+import '../../../lib/data/usescases/authentication/remote_authentication.dart';
 import '../../../lib/domain/usecases/usecases.dart';
 import '../../../lib/domain/helpers/helpers.dart';
 

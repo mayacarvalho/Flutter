@@ -1,11 +1,11 @@
 import 'package:firstapp/data/http/http_error.dart';
 
-import '../../domain/usecases/usecases.dart';
-import '../../domain/helpers/helpers.dart';
-import '../../domain/entities/entities.dart';
+import '../../../domain/usecases/usecases.dart';
+import '../../../domain/helpers/helpers.dart';
+import '../../../domain/entities/entities.dart';
 
-import '../http/http_client.dart';
-import '../models/models.dart';
+import '../../http/http_client.dart';
+import '../../models/models.dart';
 
 class RemoteAuthentication implements Authentication{
   final HttpClient httpClient;
