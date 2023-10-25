@@ -34,7 +34,7 @@ void main() {
 
     void mockResponse(int statusCode,
         {String body = '{"any_body":"any_value"}'}) {
-      mockeRequest().thenAnswer((_) async => Response(body, statusCode));
+      mockRequest().thenAnswer((_) async => Response(body, statusCode));
     }
 
     void mockError() {

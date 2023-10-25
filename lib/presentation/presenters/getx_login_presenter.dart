@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 
@@ -30,7 +28,7 @@ class GetxLoginPresenter extends GetxController implements LoginPresenter {
   Stream<bool> get isLoadingStream => _isLoading.stream;
   Stream<bool> get isFormValidStream => _isFormValid.stream;
 
-  GetxLoginPresenter({@required this.validation, @required this.authentication});
+  GetxLoginPresenter({required this.validation, required this.authentication});
 
   void validateEmail(String email) {
     _email = email;

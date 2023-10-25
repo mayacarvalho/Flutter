@@ -25,4 +25,6 @@ class ValidationBuilder {
     validations.add(EmailValidation(fieldName));
     return this;
   }
+
+  build() {}
 }

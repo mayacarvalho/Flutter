@@ -9,7 +9,7 @@ class ValidationComposite implements Validation {
 
   ValidationComposite(this.validations);
 
-  String validate({@required String field, @required String value}) {
+  String validate({required String field, required String value}) {
     String error;
 
     for (final validation in validations.where((v) => v.field == field)) {
