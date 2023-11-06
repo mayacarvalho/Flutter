@@ -5,7 +5,7 @@ ThemeData makeAppTheme() {
   final primaryColorDark = Color.fromRGBO(96, 0, 39, 1);
   final primaryColorLight = Color.fromRGBO(188, 71, 123, 1);
   final textTheme = TextTheme(
-      headline1: TextStyle(
+      displayLarge: TextStyle(
           fontSize: 30, fontWeight: FontWeight.bold, color: primaryColorDark));
   final InputDecorationTheme = InputDecorationTheme(
       enabledBorder: UnderlineInputBorder(
@@ -25,9 +25,7 @@ ThemeData makeAppTheme() {
       primaryColor: primaryColor,
       primaryColorDark: primaryColorDark,
       primaryColorLight: primaryColorLight,
-      accentColor: primaryColor,
-      backgroundColor: Color.white,
       textTheme: textTheme,
       inputDecorationTheme: inputDecorationTheme,
-      buttonTheme: buttonTheme);
+      buttonTheme: buttonTheme, colorScheme: ColorScheme.fromSwatch().copyWith(secondary: primaryColor), colorScheme: ColorScheme(background: Color.white));
 }

@@ -40,10 +40,8 @@ class _LoginPageState extends State<LoginPage> {
         });
 
         widget.presenter.mainErrorStream.listen((error) {
-          if (error != null) {
-            showErrorMessage(context, error);
-          }
-        });
+          showErrorMessage(context, error);
+                });
 
         return GestureDetector(
           onTap: () => _hideKeyboard,

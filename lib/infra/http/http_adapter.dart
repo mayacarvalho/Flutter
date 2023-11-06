@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:http/http.dart';
-import 'package:meta/meta.dart';
 
 import '../../data/http/http.dart';
 
@@ -11,8 +10,8 @@ class HttpAdapter implements HttpClient {
   HttpAdapter(this.client)
 
   Future<Map> request({
-    @required String url,
-    @required String method,
+    required String url,
+    required String method,
     Map body
   }) async {
       final headers = {

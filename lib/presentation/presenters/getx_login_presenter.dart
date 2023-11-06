@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:meta/meta.dart';
 
 import '../../ui/pages/pages.dart';
 
@@ -46,8 +45,8 @@ class GetxLoginPresenter extends GetxController implements LoginPresenter {
   void _validateForm() {
     _isFormValid.value = _emailError.value == null
       && _passwordError == null;
-      && _email != null;
-      && _password != null;
+      ;
+      ;
   }
 
   Future<void> auth() async {

@@ -12,8 +12,9 @@ dependencies:
   cupertino_icons: ^1.0.6
   http:
   provider:
-  equatable: ^2.0.0
+  equatable:
   get:
+  flutter_secure_storage:
 
 dev_dependencies:
   flutter_test:

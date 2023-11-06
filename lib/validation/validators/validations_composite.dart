@@ -1,5 +1,3 @@
-import 'package:meta/meta.dart';
-
 import '../../presentation/presenters/protocols/protocols.dart';
 
 import '../validators/protocols/protocols.dart';
