@@ -1,30 +1,41 @@
 import 'package:faker/faker.dart';
-import 'package:firstapp/data/cache/save_secure_cache_storage.dart';
+import 'package:firstapp/infra/cache/cache.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 
-class LocalStorageAdapter implements SaveSecureCacheStorage {
-  final FlutterSecureStorage secureStorage;
-
-  LocalStorageAdapter({required this.secureStorage});
-
-  Future<void> saveSecure({required String key, required String value}) async {
-    await secureStorage.write(key: key, value: value);
-  }
-}
-
 class FlutterSecureStorageSpy extends Mock implements FlutterSecureStorage {}
 
 void main() {
-  test('Should call save secure with correct values', () async {
-    final secureStorage = FlutterSecureStorageSpy();
-    final sut = LocalStorageAdapter(secureStorage: secureStorage);
-    final key = faker.lorem.word();
-    final value = faker.guid.guid();
+  LocalStorageAdapter sut;
+  FlutterSecureStorageSpy secureStorage;
+  String key;
+  String value;
 
+  setUp(() {
+    secureStorage = FlutterSecureStorageSpy();
+    sut = LocalStorageAdapter(secureStorage: secureStorage);
+    key = faker.lorem.word();
+    value = faker.guid.guid();
+  });
+
+  void mockSaveSecureError() {
+    when(secureStorage.write(key: anyNamed('key'), value: anyNamed('value')))
+        .thenThrow(Exception());
+  }
+
+  test('Should call save secure with correct values', () async {
     await sut.saveSecure(key: key, value: value);
 
     verify(secureStorage.write(key: key, value: value));
+  });
+
+  test('Should throw if save secure throws', () async {
+    mockSaveSecureError();
+
+    final future = sut.saveSecure(key: key, value: value);
+
+    //Garante que passe uma exceção qualquer
+    expect(future, throwsA(TypeMatcher<Exception>()));
   });
 }
